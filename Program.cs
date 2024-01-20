@@ -20,3 +20,20 @@
 При решении не рекомендуется пользоваться коллекциями,
 лучше обойтись исключительно массивами.
 */
+string[] GetShortEl(string[] arr)
+{
+    string[] shortArr = new string[0];
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i].Length < 4)
+        {
+            Array.Resize(ref shortArr, shortArr.Length +1);
+            shortArr[shortArr.Length - 1] = arr[i];
+        }
+    }
+    return shortArr;
+}
+
+string[] arr = {"adf", "asdfadsf", "df", "dfff", "biglengh"};
+string[] shortEl = GetShortEl(arr);
+Console.WriteLine($"[{String.Join(", ", shortEl)}]");
