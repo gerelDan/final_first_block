@@ -20,6 +20,23 @@
 При решении не рекомендуется пользоваться коллекциями,
 лучше обойтись исключительно массивами.
 */
+string[] GetArr(int sizeArr)
+{
+    string[] arr = new string[sizeArr];
+    char[] letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+    for (int i = 0; i < sizeArr; i++)
+    {
+        int sizeEl = new Random().Next(1, 10);
+        string el = "";
+        for (int j = 0; j <sizeEl; j++)
+        {
+            int letter_num = new Random().Next(0, letters.Length - 1);
+            el += letters[letter_num];
+        }
+        arr[i] = el;
+    }
+    return arr;
+}
 string[] GetShortEl(string[] arr)
 {
     string[] shortArr = new string[0];
@@ -34,6 +51,9 @@ string[] GetShortEl(string[] arr)
     return shortArr;
 }
 
-string[] arr = {"adf", "asdfadsf", "df", "dfff", "biglengh"};
+string[] arr = GetArr(10);
+Console.WriteLine(@$"Изначальный массив:
+[{String.Join(", ", arr)}]");
 string[] shortEl = GetShortEl(arr);
-Console.WriteLine($"[{String.Join(", ", shortEl)}]");
+Console.WriteLine(@$"Массив элементов длина которых меньше или равна 3:
+[{String.Join(", ", shortEl)}]");
